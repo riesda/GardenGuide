@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class GardenGuide {
+public class GardenGuide {//test comment from new machine
 
     JFrame mainFrame;
     final Font TITLEFONT = new Font("Verdana", Font.BOLD, 22);
