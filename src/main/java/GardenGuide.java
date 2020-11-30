@@ -135,7 +135,12 @@ public class GardenGuide {//TEST BRANCH COMMit
         //will display the thumbnail of a user's garden
         JButton share = new JButton("Share");
         p.add(share);
-
+        //COMMENT ADDED
+        System.out.println("DDDF");
+        //COMMENT ADDED
+        System.out.println("DDDF");
+        //COMMENT ADDED
+        System.out.println("DDDF");
     }
     public void addTitle(JPanel p, String t){
         JLabel title = new JLabel(t,JLabel.CENTER);
