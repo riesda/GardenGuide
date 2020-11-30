@@ -139,6 +139,8 @@ public class GardenGuide {//test comment from new machine
         System.out.println("DDDF");
         //COMMENT ADDED
         System.out.println("DDDF");
+        //COMMENT ADDED
+        System.out.println("DDDF");
     }
     public void addTitle(JPanel p, String t){
         JLabel title = new JLabel(t,JLabel.CENTER);
