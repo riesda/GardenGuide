@@ -11,7 +11,7 @@ public class GardenGuide extends WidgetManager {//test comment from new machine
     JFrame mainFrame;
     WidgetManager manager = new WidgetManager();
     List<JTextField> addPlantFields = new ArrayList<JTextField>();
-    int why=0;
+//    int why=0;
 
     final Font TITLEFONT = new Font("Verdana", Font.BOLD, 22);
     final Font SUBTITLEFONT =new Font("Verdana", Font.BOLD, 18);
@@ -75,16 +75,21 @@ public class GardenGuide extends WidgetManager {//test comment from new machine
     public void setupHome(JPanel p){
         p.setLayout(new GridLayout(20,1));
         addTitle(p,"Welcome To Garden Guide");
-        addSubTitle(p,"Basic Gardening Tips");
-        addText(p,"*INFO");
-        addText(p,"*INFO");
-        addSubTitle(p,"Tips For Setting Up Your Own Raised Bed");
-        addText(p,"*INFO");
-        addText(p,"*INFO");
-        addSubTitle(p,"Soil Information");
-        addText(p,"*INFO");
-        addText(p,"*INFO");
-        addSubTitle(p,"Hardiness Zones");
+        addSubTitle(p,"Using Garden Guide");
+        addText(p,"*Garden Guide is your new first step to home garden management");
+        addText(p,"*Use the SEARCH function to view planting instructions and other information about a specific plant");
+        addText(p,"*Can't find a plant in our database? Add your own plants (with planting information on the seed packet) " +
+                "using the ADD PLANT function in the side bar ");
+        addSubTitle(p,"Using the MyGarden page");
+        addText(p,"*MyGarden is your new home gardening management system");
+        addText(p,"*Begin by selecting the button next to create new garden and enter the dimensions of your garden plot");
+        addText(p,"*GardenGuide will create a representation of you garden plot using 6in by 6in squares");
+        addText(p,"*After selecting a button, choose a plant you would like to place in that area of your garden and consider it planted");
+        addSubTitle(p,"Gardening Tips");
+        addText(p,"*Make sure you are planting the right plants at the right time of year for best results");
+        addText(p,"*Prepare your soil with a mixture of fertilizer and fresh dirt to help your plants grow big and strong");
+        addText(p,"*Make sure you are what you are planting is able to survive in your climate, there is a reason you don't see avocado trees in Alaska");
+        addSubTitle(p,"Helpful Links");
         addText(p,"*INFO");
         addText(p,"*INFO");
     }

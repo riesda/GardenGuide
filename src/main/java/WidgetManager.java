@@ -86,7 +86,7 @@ public class WidgetManager extends GardenCreator{
     }
 
     public void shareGarden(JPanel p){
-        gardenCreator.makeVisible();
+//        gardenCreator.makeVisible();
         System.out.println("Share Garden Test");
 
     }
