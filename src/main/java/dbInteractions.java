@@ -33,33 +33,35 @@ public class dbInteractions {
         }
     }
 
-    public static void grabAllPlants(){
+    public static List<String[]> grabAllPlants(){
         Connection c = null;
         Statement stmt = null;
+        List<String[]> listRet = new ArrayList<>();
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:test.db");
+            c = DriverManager.getConnection("jdbc:sqlite:plantdb.db");
             System.out.println("Opened database successfully");
             stmt = c.createStatement();
             c.setAutoCommit(false);
             ResultSet rs = stmt.executeQuery( "SELECT * FROM PLANTS ORDER BY NAME;" );
+            String[] tempStore = new String[14];
             while (rs.next()){
 
-                String name = rs.getString("Plant_Name");
-                String p_type = rs.getString("Plant_Type");
-                String p_depth = rs.getString("Planting_Depth");
-                String p_startT = rs.getString("Start_Time");
-                String p_endT = rs.getString("End_Time");
-                String p_spaceSingle = rs.getString("Spacing_Single");
-                String p_spaceRow = rs.getString("Spacing_Plant_Row");
-                String p_rowGapS = rs.getString("Row_Gap_Spacing");
-                String p_sow = rs.getString("Sow_and_Plant");
-                String p_harvest = rs.getString("Harvesting");
-                String p_feed = rs.getString("Feeding");
-                String p_hard = rs.getString("Soil_Hardiness");
-                String p_expose = rs.getString("Sun_Exposure");
-                String p_soilType = rs.getString("Soil_Type");
-
+                tempStore[0] = rs.getString("Plant_Name");
+                tempStore[1] = rs.getString("Plant_Type");
+                tempStore[2] = rs.getString("Planting_Depth");
+                tempStore[3] = rs.getString("Start_Time");
+                tempStore[4] = rs.getString("End_Time");
+                tempStore[5] = rs.getString("Spacing_Single");
+                tempStore[6] = rs.getString("Spacing_Plant_Row");
+                tempStore[7] = rs.getString("Row_Gap_Spacing");
+                tempStore[8] = rs.getString("Sow_and_Plant");
+                tempStore[9] = rs.getString("Harvesting");
+                tempStore[10] = rs.getString("Feeding");
+                tempStore[11] = rs.getString("Soil_Hardiness");
+                tempStore[12] = rs.getString("Sun_Exposure");
+                tempStore[13] = rs.getString("Soil_Type");
+                listRet.add(tempStore);
             }
             rs.close();
             stmt.close();
@@ -68,11 +70,13 @@ public class dbInteractions {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
+        return listRet;
     }
 
-    public static void grabPlantNameSpecific(String input){
+    public static List<String[]> grabPlantNameSpecific(String input){
         Connection c = null;
         Statement stmt = null;
+        List<String[]> listRet = new ArrayList<>();
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:plantdb.db");
@@ -81,36 +85,29 @@ public class dbInteractions {
             c.setAutoCommit(false);
 //            String sqInput = "SELECT * FROM PLANTS WHERE Plant_Name LIKE ?";
             String sqInput = String.format("SELECT * FROM PLANTS  WHERE Plant_Name LIKE '%s", input);
-//            sqInput --;
             sqInput +="%'";
-//            sqInput +="%\'";
-//            String sqInput = String.format("SELECT * FROM PLANTS ORDER BY Plant_Name ASC WHERE Plant_Name LIKE '%s';", input);
-            System.out.println(sqInput);
-//            PreparedStatement pstmt = c.prepareStatement(sqInput);
-//            System.out.println(pstmt.toString());
-//            pstmt.setString(1, input);
-//            System.out.println(pstmt.toString());
-//            pstmt.executeUpdate();
-//            System.out.println(pstmt.toString());
+            String[] tempStore = new String[14];
+//            System.out.println(sqInput);
             ResultSet rs = stmt.executeQuery(sqInput);
             while (rs.next()){
 
-                String name = rs.getString("Plant_Name");
-                String p_type = rs.getString("Plant_Type");
-                String p_depth = rs.getString("Planting_Depth");
-                String p_startT = rs.getString("Start_Time");
-                String p_endT = rs.getString("End_Time");
-                String p_spaceSingle = rs.getString("Spacing_Single");
-                String p_spaceRow = rs.getString("Spacing_Plant_Row");
-                String p_rowGapS = rs.getString("Row_Gap_Spacing");
-                String p_sow = rs.getString("Sow_and_Plant");
-                String p_harvest = rs.getString("Harvesting");
-                String p_feed = rs.getString("Feeding");
-                String p_hard = rs.getString("Soil_Hardiness");
-                String p_expose = rs.getString("Sun_Exposure");
-                String p_soilType = rs.getString("Soil_Type");
+                tempStore[0] = rs.getString("Plant_Name");
+                tempStore[1] = rs.getString("Plant_Type");
+                tempStore[2] = rs.getString("Planting_Depth");
+                tempStore[3] = rs.getString("Start_Time");
+                tempStore[4] = rs.getString("End_Time");
+                tempStore[5] = rs.getString("Spacing_Single");
+                tempStore[6] = rs.getString("Spacing_Plant_Row");
+                tempStore[7] = rs.getString("Row_Gap_Spacing");
+                tempStore[8] = rs.getString("Sow_and_Plant");
+                tempStore[9] = rs.getString("Harvesting");
+                tempStore[10] = rs.getString("Feeding");
+                tempStore[11] = rs.getString("Soil_Hardiness");
+                tempStore[12] = rs.getString("Sun_Exposure");
+                tempStore[13] = rs.getString("Soil_Type");
+                listRet.add(tempStore);
 
-                System.out.println(name);
+//                System.out.println(name);
 
             }
             rs.close();
@@ -120,10 +117,7 @@ public class dbInteractions {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
-    }
-
-    public static void main(String args[]) throws IOException{
-        grabPlantNameSpecific("Ar");
+        return listRet;
     }
 
 }
